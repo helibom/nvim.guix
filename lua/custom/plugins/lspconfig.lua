@@ -8,6 +8,8 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		opts = {
 			ensure_installed = {
+				"csharp_ls",
+				"clojure_lsp",
 				"marksman",
 				"bashls",
 				"lua_ls",
@@ -17,9 +19,6 @@ return {
 				"cssls",
 				"tailwindcss",
 				-- "pylsp",
-				-- "clojure_lsp",
-				-- "csharp_ls",
-				-- "texlab",
 			},
 		},
 		version = "1.*",
@@ -31,23 +30,6 @@ return {
 			local capabilities = require("blink.cmp").get_lsp_capabilities() -- autocompletion
 
 			require("mason").setup()
-			require("mason-lspconfig").setup({
-				ensure_installed = {
-					"lua_ls",
-					"jsonls",
-					"yamlls",
-					"ts_ls",
-					-- "denols",
-					"cssls",
-					"tailwindcss",
-					-- "pylsp",
-					"clojure_lsp",
-					-- "csharp_ls",
-					"bashls",
-					"texlab",
-					"marksman",
-				},
-			})
 
 			-- ######### TYPESCRIPT SERVERS ############# --
 			vim.lsp.config["ts_ls"] = {
@@ -64,6 +46,8 @@ return {
 
 			-- ######### OTHER SERVERS ############# --
 			vim.lsp.config["marksman"] = { capabilities = capabilities, filetypes = { "markdown" } }
+			vim.lsp.config["csharp_ls"] = { capabilities = capabilities }
+			vim.lsp.config["clojure_lsp"] = { capabilities = capabilities }
 			vim.lsp.config["lua_ls"] = { capabilities = capabilities }
 			vim.lsp.config["jsonls"] = { capabilities = capabilities }
 			vim.lsp.config["yamlls"] = { capabilities = capabilities }
